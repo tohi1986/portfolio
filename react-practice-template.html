@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React useRef Primjer</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useRef } = React;
+
+    function App() {
+      const kutijica = useRef(0); // kutijica
+
+      const povecaj = () => {
+        kutijica.current += 1; // povećavamo broj
+        console.log("Broj u kutijici:", kutijica.current);
+
+        if (kutijica.current === 3) {
+          alert("Broj je 3! 🎉"); // alert kada broj dođe do 3
+        }
+      };
+
+      return (
+        <div>
+          <button onClick={povecaj}>Povećaj broj u kutijici</button>
+          <p>Broj se ne prikazuje na stranici, samo u konzoli/popupu 😎</p>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+</body>
+</html>
